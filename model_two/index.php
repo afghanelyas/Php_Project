@@ -5,24 +5,11 @@ ini_set('display_errors', '1');
 
 require "function.php";
 
-// require "router.php";
+require "Database.php";
 
-// connect to the database
+$db = new Database();
 
-$dns = "mysql:host=localhost;port=3306;dbname=myapp;user=elyas;password=123@Kabul@!@#;charset=utf8";
+$posts = $db->query("select * from info")->fetchAll(PDO::FETCH_ASSOC);
 
-$pdo = new PDO($dns);
+dd($posts);
 
-
-$statement = $pdo->prepare("SELECT * FROM info");
-
-$statement->execute();
-
-
-$result = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-foreach ($result as $row){
-
-    echo "<li>" . $row['name'] . "</li>";
-
-}
