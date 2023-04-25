@@ -6,7 +6,12 @@ require "function.php";
 require "Database.php";
 $config = require"config.php";
 $db = new Database($config['database']);
-$post = $db->query("select * from info")->fetchAll();
+
+$name = $_GET['name'] ?? 1;;
+
+$sql = "SELECT * FROM info WHERE name = ? ";
+
+$post = $db->query($sql , [$name])->fetch();
 echo "<pre>";
 var_dump($post);
 echo "</pre>";
