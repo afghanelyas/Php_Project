@@ -3,7 +3,7 @@
 <?php require('partials/banner.php'); ?>
   <main>
     <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-<form>
+<form method="POST">
   <div class="space-y-12">
     <div class="grid grid-cols-1 gap-x-8 gap-y-10 border-b border-gray-900/10 pb-12 md:grid-cols-3">
       
