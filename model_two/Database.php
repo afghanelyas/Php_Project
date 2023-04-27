@@ -1,8 +1,8 @@
 <?php
-// connect to the database, and execute a query
 
 class Database {
     public $connection;
+    public $statment;
     public function __construct($config , $username = 'elyas', $password = "123@Kabul"){
       
         $dsn = 'mysql:' . http_build_query($config , '' , ';');
@@ -11,8 +11,25 @@ class Database {
         ]);
     }
     public function query($query , $prams=[]){
-        $statment = $this->connection->prepare($query);
-        $statment->execute($prams);
-        return $statment;
+        $this->statment = $this->connection->prepare($query);
+        $this->statment->execute($prams);
+        return $this;
     }
+    
+    public function get(){
+        return $this->statment->fetchAll();
+    }
+
+    public function find(){
+        return $this->statment->fetch();
+    }
+
+    public function findOrFail(){
+        $result = $this->find();
+        if(! $result){
+            abort();
+        }
+        return $result;
+    }
+    
 }
