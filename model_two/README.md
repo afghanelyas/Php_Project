@@ -6,7 +6,6 @@
         --> Array
         --> filter
 
-    
     Second Model
         --> link from page to page
         --> Partials
