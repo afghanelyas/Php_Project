@@ -20,4 +20,11 @@
     Thrid Model
         --> Mini project notes app 
         --> Rendering all of person notes
+        --> introduction to authorization 
+        --> programming is rewriting
+        --> intro to forms and request methods
+        --> escape output
+        --> introduction to validation 
+        --> extract a simple validator class
+
     
