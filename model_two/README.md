@@ -26,5 +26,3 @@
         --> escape output
         --> introduction to validation 
         --> extract a simple validator class
-
-    
