@@ -3,12 +3,12 @@ use Core\Database;
 use Core\Validator;
 
 require base_path("Core/Validator.php");
+
 $config = require base_path("config.php");
 $db = new Database($config['database']);
 
 $errors = [];
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $validator = new Validator();
     if(! $validator::string($_POST['body'], 1 , 400)){
         $errors['body'] = "The body should no more 400 characters.";
     }
