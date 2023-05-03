@@ -30,4 +30,7 @@
     **Fourth Model**
         * resourcefull nameing coventions
         * php autoloading and extraction
+        * introduction to namespacing
+        * handling multiple request methods types
+        * build a better router
         
