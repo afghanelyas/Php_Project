@@ -5,6 +5,7 @@ ini_set('display_errors', '1');
 
 const BASE_PATH = __DIR__.'/../';
 require BASE_PATH  . "Core/function.php";
+require base_path("bootstrap.php");
 
 spl_autoload_register(function ($class){
    require base_path("Core/$class.php");

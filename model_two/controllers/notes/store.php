@@ -1,7 +1,5 @@
 <?php
-
-$config = require base_path("config.php");
-$db = new Database($config['database']);
+$db = App::container()->resolve(Core\Database::class);
 
 $errors = [];
 if(! Validator::string($_POST['body'], 1 , 1000)){

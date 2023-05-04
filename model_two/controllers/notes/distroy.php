@@ -1,9 +1,6 @@
 <?php
 
-$config = require base_path("config.php");
-$db = new Database($config['database']);
-
-// request for delect query
+$db = App::container()->resolve(Core\Database::class);
 $currentUserId = 2;
 
 $note = $db->query("SELECT * FROM notes WHERE id = :id" , [

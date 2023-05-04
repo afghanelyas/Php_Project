@@ -1,7 +1,6 @@
 <?php
 
-$config = require base_path("config.php");
-$db = new Database($config['database']);
+$db = App::container()->resolve(Core\Database::class);
 
 // request for delect query
 $currentUserId = 2;
