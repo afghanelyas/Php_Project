@@ -33,4 +33,7 @@
         * introduction to namespacing
         * handling multiple request methods types
         * build a better router
+        * one request one controller
+        * make your first service conatiner
+        * updating with patch requests
         
