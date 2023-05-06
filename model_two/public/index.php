@@ -3,6 +3,9 @@
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
+ob_clean();
+session_start();
+
 const BASE_PATH = __DIR__.'/../';
 require BASE_PATH  . "Core/function.php";
 require base_path("bootstrap.php");

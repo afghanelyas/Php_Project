@@ -1,6 +1,5 @@
 <?php
 
-
 $email = $_POST['email'];
 $password = $_POST['password'];
 
@@ -37,11 +36,12 @@ if($user){
         "password" => $password
     ]);
 
-    // mark that the user has logged in.
-    $_SESSION['user'] = [
-        "email" => $email
+    // mark that the user has logged in by setting a session variable
+   $_SESSION['user'] = [
+        "email" => $email,
+        
     ];
-
+    
     header("Location: /");
     exit();
 }
