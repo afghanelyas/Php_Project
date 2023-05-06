@@ -1,8 +1,4 @@
 <?php
-require_once base_path("Core/Database.php");
-require_once base_path("Core/Validator.php");
-
-
 
 
 $email = $_POST['email'];
@@ -11,7 +7,7 @@ $password = $_POST['password'];
 
 //validate the form input
 $errors =  [];
-if(!Validator::string($email)){
+if(!Validator::email($email)){
     $errors['email'] = "Please enter a valid email address";
 }
 if(!Validator::string($password , 7, 255)){
