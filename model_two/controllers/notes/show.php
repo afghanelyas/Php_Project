@@ -2,7 +2,7 @@
 
 $db = App::container()->resolve(Core\Database::class);
 
-$currentUserId = 2;
+$currentUserId = 3;
 
 $note = $db->query("SELECT * FROM notes WHERE id = :id" , [
     'id' => $_GET['id']
