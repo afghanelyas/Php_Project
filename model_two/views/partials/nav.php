@@ -10,7 +10,9 @@
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
               <a href="/" class="<?= urlIS('/') ? "bg-gray-900 text-white" : "text-gray-300" ?>  hover:bg-gray-700 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
               <a href="/about" class="<?= urlIs('/about') ? "bg-gray-900 text-white" : "text-gray-300" ?>  hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About</a>
+              <?php if(isset($_SESSION['user']) ?? false)  : ?>
               <a href="/notes" class="<?= urlIs('/notes') ? "bg-gray-900 text-white" : "text-gray-300" ?>  hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Notes</a>
+              <?php endif; ?>
               <a href="/contact" class="<?= urlIs('/contact') ? "bg-gray-900 text-white" : "text-gray-300" ?> hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact</a>
             </div>
           </div>
@@ -38,28 +40,15 @@
 
                 <?php endif; ?>
               </div>
-
-              <!--
-                Dropdown menu, show/hide based on menu state.
-
-                Entering: "transition ease-out duration-100"
-                  From: "transform opacity-0 scale-95"
-                  To: "transform opacity-100 scale-100"
-                Leaving: "transition ease-in duration-75"
-                  From: "transform opacity-100 scale-100"
-                  To: "transform opacity-0 scale-95"
-              -->
-              <div class="absolute hidden right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                <!-- Active: "bg-gray-100", Not Active: "" -->
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
-
-                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
               </div>
-            </div>
-          </div>
-        </div>
+              <?php if(isset($_SESSION['user']) ?? false) : ?>
+                  <div class="flex space-x-4 ml-3">
+                    <form method="POST"  action="/session">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="hover:bg-gray-700 text-white rounded-md px-3 py-2  text-sm font-medium">Log Out</button>
+                    </form>
+                  </div>
+              <?php endif; ?>
         <div class="-mr-2 flex md:hidden">
           <!-- Mobile menu button -->
           <button type="button" class="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" aria-controls="mobile-menu" aria-expanded="false">

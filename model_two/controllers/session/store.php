@@ -13,7 +13,7 @@ if(!Validator::string($password)){
     $errors['password'] = "Please provide a valid password";
 }
 if (! empty($errors)){
-  return view("sessions/create.view.php", [
+  return view("session/create.view.php", [
     "errors" => $errors,
   ]);
 }
@@ -22,22 +22,16 @@ $user = $db->query("SELECT * FROM users WHERE email = :email", [
   ])->find();
 
 
-if (! $user){
-    $errors['email'] = "No user with that email address exists";
-    return view("sessions/create.view.php", [
-        "errors" => $errors,
-    ]);
+if ($user){
+    if (password_verify($password, $user['password'])) {
+        login([
+            "email" => $email,
+        ]);
+        header("Location: /");
+        exit();
+    }
 }
-
-if (password_verify($password, $user['password'])) {
-    login([
-        "email" => $email,
-    ]);
-    header("Location: /");
-    exit();
-}
-
-return view("sessions/create.view.php", [
+return view("session/create.view.php", [
     "errors" => [
         "password" => "No matching user found for that email and password.",
     ],
