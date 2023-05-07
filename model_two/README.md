@@ -37,5 +37,11 @@
         * make your first service conatiner
         * updating with patch requests
 
+    **five Model**
+        * php session
+        * register a new user
+        * write you first middleware
+        * how to handle password authentication
+        * login a user
     
         
