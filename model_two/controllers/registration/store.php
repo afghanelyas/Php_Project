@@ -3,7 +3,6 @@
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-
 //validate the form input
 $errors =  [];
 if(!Validator::email($email)){
@@ -37,10 +36,7 @@ if($user){
     ]);
 
     // mark that the user has logged in by setting a session variable
-   $_SESSION['user'] = [
-        "email" => $email,
-        
-    ];
+   login($user);
     
     header("Location: /");
     exit();
