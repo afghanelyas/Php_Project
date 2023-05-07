@@ -1,12 +1,12 @@
 
-    **First Model**
+    **First Module**
         * Variable
         * Class
         * Function
         * Array
         * filter
 
-    **Second Model**
+    **Second Module**
         * link from page to page
         * Partials
         * Supper global and active page
@@ -17,7 +17,7 @@
         * Environments and allowing for flexibility
         * Sql injection vulnerabilities explained
 
-    **Thrid Model**
+    **Thrid Module**
         * Mini project notes app 
         * Rendering all of person notes
         * introduction to authorization 
@@ -27,7 +27,7 @@
         * introduction to validation 
         * extract a simple validator class
 
-    **Fourth Model**
+    **Fourth Module**
         * resourcefull nameing coventions
         * php autoloading and extraction
         * introduction to namespacing
@@ -37,7 +37,7 @@
         * make your first service conatiner
         * updating with patch requests
 
-    **five Model**
+    **five Module**
         * php session
         * register a new user
         * write you first middleware
