@@ -1,35 +1,26 @@
 <?php
 
 require base_path("Http/Forms/LoginForm.php");
-
-$db = App::container()->resolve(Core\Database::class);
+require base_path("Core/Authenticator.php");
 
 $email = $_POST['email'];
 $password = $_POST['password'];
 
 $form = new LoginForm();
-if(! $form->validate($email , $password)){
-    return view("session/create.view.php", [
-        "errors" => $form->errors(),
-    ]);     
-}
 
-$user = $db->query("SELECT * FROM users WHERE email = :email", [
-    "email" => $email,
-  ])->find();
+if($form->validate($email , $password)){
 
+    if((new Authenticator)->attemp($email, $password)) {
+        redirect("/");
+    }   
+    $form->error("password", "No matching user found for that email and password.");
+} 
 
-if ($user){
-    if (password_verify($password, $user['password'])) {
-        login([
-            "email" => $email,
-        ]);
-        header("Location: /");
-        exit();
-    }
-}
 return view("session/create.view.php", [
-    "errors" => [
-        "password" => "No matching user found for that email and password.",
-    ],
-]);
+    "errors" => $form->errors(),
+]);     
+
+
+
+
+
