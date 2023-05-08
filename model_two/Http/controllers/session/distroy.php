@@ -1,7 +1,10 @@
 <?php
 
-logout();
 
-header("Location: /");
+
+(new Authenticator)->logout();
+
+// redirect to the home page
+header('Location: /');
 
 exit();
