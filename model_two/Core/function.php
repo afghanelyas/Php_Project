@@ -1,5 +1,6 @@
 <?php
 
+
 function dd($value){
     echo "<pre>";
     var_dump('$_SERVER');
@@ -33,6 +34,9 @@ function view($path , $attributes = []){
 function redirect($path){
     header("Location: {$path}");
     exit();
+}
+function old($key, $default = ''){
+    return Session::get('old')[ $key ] ?? $default; 
 }
 
 
