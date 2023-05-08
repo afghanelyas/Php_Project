@@ -1,22 +1,19 @@
 <?php
 
-$email = $_POST['email'];
-$password = $_POST['password'];
+require base_path("Http/Forms/LoginForm.php");
 
 $db = App::container()->resolve(Core\Database::class);
 
-$errors =  [];
-if(!Validator::email($email)){
-    $errors['email'] = "Please enter a valid email address";
+$email = $_POST['email'];
+$password = $_POST['password'];
+
+$form = new LoginForm();
+if(! $form->validate($email , $password)){
+    return view("session/create.view.php", [
+        "errors" => $form->errors(),
+    ]);     
 }
-if(!Validator::string($password)){
-    $errors['password'] = "Please provide a valid password";
-}
-if (! empty($errors)){
-  return view("session/create.view.php", [
-    "errors" => $errors,
-  ]);
-}
+
 $user = $db->query("SELECT * FROM users WHERE email = :email", [
     "email" => $email,
   ])->find();
