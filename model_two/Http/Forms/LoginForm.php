@@ -13,9 +13,7 @@ class LoginForm{
         if(!Validator::string($attributes['password'])){
             $this->errors['password'] = "Please provide a valid password";
         }
-        
     }
-
     public static function validate($attributes){
 
             $instance = new static($attributes);
