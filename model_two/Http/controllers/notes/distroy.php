@@ -1,12 +1,18 @@
 <?php
 
 use Core\App;
+use Core\Database;
 
+try {
+    $db = App::container()->resolve(Database::class);
+} catch (Exception $e) {
+    echo $e->getMessage();
+    exit;
+}
 
-$db = App::container()->resolve(Core\Database::class);
 $currentUserId = 18;
 
-$note = $db->query("SELECT * FROM notes WHERE id = :id" , [
+$note = $db->query("SELECT * FROM notes WHERE id = :id", [
     'id' => $_POST['id']
 ])->findOrFail();
 

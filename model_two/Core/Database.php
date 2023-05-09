@@ -1,38 +1,61 @@
 <?php
 
 namespace Core;
-use PDO;
 
-class Database {
-    public $connection;
-    public $statment;
-    public function __construct($config , $username = 'elyas', $password = "123@Kabul"){
-      
-        $dsn = 'mysql:' . http_build_query($config , '' , ';');
-        $this->connection = new PDO($dsn , $username , $password , [
+use PDO;
+use PDOStatement;
+
+class Database
+{
+
+    public PDO $connection;
+    public PDOStatement $statement;
+
+    public function __construct($config, $username = 'root', $password = "")
+    {
+        $dsn = 'mysql:'.http_build_query($config, '', ';');
+        $this->connection = new PDO($dsn, $username, $password, [
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         ]);
     }
-    public function query($query , $prams=[]){
-        $this->statment = $this->connection->prepare($query);
-        $this->statment->execute($prams);
+
+    /**
+     * Execute the statement
+     */
+    public function query($query, $prams = []): self
+    {
+        $this->statement = $this->connection->prepare($query);
+        $this->statement->execute($prams);
+
         return $this;
     }
-    
-    public function get(){
-        return $this->statment->fetchAll();
+
+    /**
+     * Get all the results
+     */
+    public function get(): bool|array
+    {
+        return $this->statement->fetchAll();
     }
 
-    public function find(){
-        return $this->statment->fetch();
+    /**
+     * Get the first result
+     */
+    public function find(): bool|array
+    {
+        return $this->statement->fetch();
     }
 
-    public function findOrFail(){
+    /**
+     * Get the first result or throw an exception
+     */
+    public function findOrFail(): array
+    {
         $result = $this->find();
-        if(! $result){
+        if ( ! $result) {
             abort();
         }
+
         return $result;
     }
-    
 }
