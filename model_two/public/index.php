@@ -11,13 +11,26 @@ require BASE_PATH  . "Core/function.php";
 require base_path("bootstrap.php");
 
 spl_autoload_register(function ($class){
+
    require base_path("Core/$class.php");
+   
 });
 $router = new  Router();
 $routes = require base_path('routes.php');
 $uri  = parse_url( $_SERVER['REQUEST_URI'])['path'];
 
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
-$router->route($uri , $method);
+
+try{
+
+   $router->route($uri , $method);
+   
+}catch(ValidationException $exception){
+ 
+   Session::flash("errors", $exception->errors);
+   Session::flash("old" ,$exception->old);
+
+   return redirect($router->previousUrl());
+}
 
 Session::unflash();
