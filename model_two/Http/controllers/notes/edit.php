@@ -1,5 +1,8 @@
 <?php
 
+use Core\App;
+
+
 $db = App::container()->resolve(Core\Database::class);
 
 $currentUserId = 18;

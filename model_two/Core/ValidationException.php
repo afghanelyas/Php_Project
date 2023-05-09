@@ -1,5 +1,8 @@
 <?php
 
+namespace Core;
+
+
 class ValidationException extends Exception{
     
     public readonly array $errors;

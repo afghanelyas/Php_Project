@@ -1,5 +1,7 @@
 <?php
 
+use Core\App;
+
 $email = $_POST['email'];
 $password = $_POST['password'];
 

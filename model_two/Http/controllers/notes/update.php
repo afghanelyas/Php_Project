@@ -1,5 +1,9 @@
 <?php
 
+use Core\App;
+use Core\Validator;
+
+
 $db = App::container()->resolve(Core\Database::class);
 
 $currentUserId = 18;

@@ -1,9 +1,10 @@
 <?php
-require base_path('Core/middleware/Guest.php');
-require base_path('Core/middleware/Auth.php');
-require base_path('Core/middleware/Middleware.php');
 
-class Router {
+use Core\Middleware\Middleware;
+use Core\Router\RouterManager;
+
+
+class Router{
     protected  $routes = [];
 
     public function add($uri , $controller , $method){

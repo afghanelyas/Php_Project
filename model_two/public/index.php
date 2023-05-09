@@ -12,7 +12,8 @@ require base_path("bootstrap.php");
 
 spl_autoload_register(function ($class){
 
-   require base_path("Core/$class.php");
+   $class = str_replace('\\' , DIRECTORY_SEPARATOR , $class);
+   require base_path("{$class}.php");
    
 });
 $router = new  Router();
