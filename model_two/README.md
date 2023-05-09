@@ -37,11 +37,18 @@
         * make your first service conatiner
         * updating with patch requests
 
-    **five Module**
+    **Five Module**
         * php session
         * register a new user
         * write you first middleware
         * how to handle password authentication
         * login a user
     
+    **Six Module**
+        * refactor to a login form
+        * extract an authenticator class
+        * session flashing 
+        * flash old form data to the session
+        * from validation
+
         
