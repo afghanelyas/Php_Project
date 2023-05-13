@@ -1,11 +1,14 @@
 <?php
 
+namespace Core;
+
+use Core\Middleware\Auth;
+use Core\Middleware\Guest;
 use Core\Middleware\Middleware;
 
 
 class Router
 {
-
     protected array $routes = [];
 
     public function add($uri, $controller, $method): static

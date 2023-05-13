@@ -1,0 +1,17 @@
+{
+    "name": "elyas/model_two",
+    "authors": [
+        {
+            "name": "afghanelyas",
+            "email": "afghan.elyas1@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "Http\\": "Http/"
+
+        }
+    }
+}
